@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dypunneqneao8"]
+
+[ext_resource type="PackedScene" uid="uid://c55t5fmfd5e3v" path="res://visual_effects/components/base_effect.tscn" id="1_yac65"]
+[ext_resource type="Texture2D" uid="uid://cg8p83ykxtrcp" path="res://visual_effects/dust_particles/fall/1.png" id="2_hq276"]
+[ext_resource type="Texture2D" uid="uid://d2clnqom6r77n" path="res://visual_effects/dust_particles/fall/2.png" id="3_ghyed"]
+[ext_resource type="Texture2D" uid="uid://do10jf0f4q2k6" path="res://visual_effects/dust_particles/fall/3.png" id="4_3go88"]
+[ext_resource type="Texture2D" uid="uid://dr7a7xptvtx44" path="res://visual_effects/dust_particles/fall/4.png" id="5_d1ixu"]
+[ext_resource type="Texture2D" uid="uid://cgey5uew10xyx" path="res://visual_effects/dust_particles/fall/5.png" id="6_rd4m3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai82y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hq276")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ghyed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3go88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d1ixu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rd4m3")
+}],
+"loop": false,
+"name": &"fall_effect",
+"speed": 10.0
+}]
+
+[node name="FallEffect" unique_id=105907540 instance=ExtResource("1_yac65")]
+sprite_frames = SubResource("SpriteFrames_ai82y")
+animation = &"fall_effect"
+autoplay = "fall_effect"

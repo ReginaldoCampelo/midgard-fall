@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c646vp3vf32cp"]
+
+[ext_resource type="Script" uid="uid://d4jeqe8j83tp8" path="res://entities/components/base_enemy.gd" id="1_y1lly"]
+[ext_resource type="Script" uid="uid://d3p0ln4ayyx8k" path="res://entities/components/enemy_texture.gd" id="2_co1hf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ntbv"]
+
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=1058123131 node_paths=PackedStringArray("_enemy_texture", "_floor_detection_ray")]
+script = ExtResource("1_y1lly")
+_enemy_texture = NodePath("Texture")
+_floor_detection_ray = NodePath("FloorDetectionRay")
+
+[node name="Texture" type="AnimatedSprite2D" parent="." unique_id=591695575 node_paths=PackedStringArray("_enemy")]
+sprite_frames = SubResource("SpriteFrames_6ntbv")
+script = ExtResource("2_co1hf")
+_enemy = NodePath("..")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1914730052]
+
+[node name="FloorDetectionRay" type="RayCast2D" parent="." unique_id=2106355783]
+target_position = Vector2(0, 16)
+
+[connection signal="animation_finished" from="Texture" to="Texture" method="_on_animation_finished"]

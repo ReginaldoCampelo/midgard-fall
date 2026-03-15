@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://blk4cpwenh6p6"]
+
+[ext_resource type="PackedScene" uid="uid://c55t5fmfd5e3v" path="res://visual_effects/components/base_effect.tscn" id="1_sdvls"]
+[ext_resource type="Texture2D" uid="uid://bpwkcpkusbjyk" path="res://visual_effects/sword/attack_2/1.png" id="2_clffj"]
+[ext_resource type="Texture2D" uid="uid://bxc6wvcl1xt25" path="res://visual_effects/sword/attack_2/2.png" id="3_npog2"]
+[ext_resource type="Texture2D" uid="uid://ot7ly1bytug8" path="res://visual_effects/sword/attack_2/3.png" id="4_y8npa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gcmtb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_clffj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_npog2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y8npa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Attack2" unique_id=105907540 instance=ExtResource("1_sdvls")]
+sprite_frames = SubResource("SpriteFrames_gcmtb")

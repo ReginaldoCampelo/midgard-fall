@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://jax2ehly33mg"]
+
+[ext_resource type="Script" uid="uid://iq2k3i18q0gf" path="res://components/collectable_component.gd" id="1_f38sf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f38sf"]
+
+[node name="CollectableComponent" type="Area2D" unique_id=2069333424]
+script = ExtResource("1_f38sf")
+
+[node name="Texture" type="AnimatedSprite2D" parent="." unique_id=1123416068]
+sprite_frames = SubResource("SpriteFrames_f38sf")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1405902373]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

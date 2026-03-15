@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://buq8oecfijlcx"]
+
+[ext_resource type="PackedScene" uid="uid://c55t5fmfd5e3v" path="res://visual_effects/components/base_effect.tscn" id="1_nn1la"]
+[ext_resource type="Texture2D" uid="uid://b7smanlthv7y5" path="res://visual_effects/dust_particles/jump/1.png" id="2_xor74"]
+[ext_resource type="Texture2D" uid="uid://xdaat881slix" path="res://visual_effects/dust_particles/jump/2.png" id="3_xbqro"]
+[ext_resource type="Texture2D" uid="uid://cov32rcl0pexe" path="res://visual_effects/dust_particles/jump/3.png" id="4_qgfnq"]
+[ext_resource type="Texture2D" uid="uid://dwcky56jbfwe7" path="res://visual_effects/dust_particles/jump/4.png" id="5_skwua"]
+[ext_resource type="Texture2D" uid="uid://da8fneh845i2s" path="res://visual_effects/dust_particles/jump/5.png" id="6_x2ni8"]
+[ext_resource type="Texture2D" uid="uid://duu5oh5vityh0" path="res://visual_effects/dust_particles/jump/6.png" id="7_sc2au"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lj511"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xor74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xbqro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qgfnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_skwua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x2ni8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sc2au")
+}],
+"loop": false,
+"name": &"jump_effect",
+"speed": 10.0
+}]
+
+[node name="JumpEffect" unique_id=105907540 instance=ExtResource("1_nn1la")]
+sprite_frames = SubResource("SpriteFrames_lj511")
+animation = &"jump_effect"
+autoplay = "jump_effect"

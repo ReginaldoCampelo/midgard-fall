@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dqpv373sv7pjx"]
+
+[ext_resource type="PackedScene" uid="uid://jax2ehly33mg" path="res://components/collectable_component.tscn" id="1_jpt3h"]
+[ext_resource type="Texture2D" uid="uid://8lx4v0y0bgu4" path="res://collectables/sword/idle/Sword Idle 01.png" id="2_m5r0q"]
+[ext_resource type="Script" uid="uid://cj8hb82wfxdtw" path="res://collectables/sword/collectable_sword.gd" id="2_xm8hs"]
+[ext_resource type="Texture2D" uid="uid://c2qb8ns15v5gh" path="res://collectables/sword/idle/Sword Idle 02.png" id="3_xm8hs"]
+[ext_resource type="Texture2D" uid="uid://48vn4bl82ivv" path="res://collectables/sword/idle/Sword Idle 03.png" id="4_dt233"]
+[ext_resource type="Texture2D" uid="uid://beswhfi2fhr2c" path="res://collectables/sword/idle/Sword Idle 04.png" id="5_vgokv"]
+[ext_resource type="Texture2D" uid="uid://spie3urmqv47" path="res://collectables/sword/idle/Sword Idle 05.png" id="6_7a3mn"]
+[ext_resource type="Texture2D" uid="uid://cmfqjo8j15jx3" path="res://collectables/sword/idle/Sword Idle 06.png" id="7_ygaos"]
+[ext_resource type="Texture2D" uid="uid://15syrn8h36u8" path="res://collectables/sword/idle/Sword Idle 07.png" id="8_pkft8"]
+[ext_resource type="Texture2D" uid="uid://b4o73yw1whmt1" path="res://collectables/sword/idle/Sword Idle 08.png" id="9_iuq7u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee4b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m5r0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xm8hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dt233")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgokv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7a3mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ygaos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pkft8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iuq7u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5r0q"]
+size = Vector2(18, 3)
+
+[node name="CollectableSword" unique_id=2069333424 instance=ExtResource("1_jpt3h")]
+script = ExtResource("2_xm8hs")
+
+[node name="Texture" parent="." index="0" unique_id=1123416068]
+sprite_frames = SubResource("SpriteFrames_ee4b0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.37237975
+
+[node name="Collision" parent="." index="1" unique_id=1405902373]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_m5r0q")
