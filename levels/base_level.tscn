@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://nue83of2jbdp" path="res://terrain/terrain.tscn" id="1_5vx1e"]
 [ext_resource type="PackedScene" uid="uid://ssophnlo7w4n" path="res://background/background.tscn" id="2_eesb3"]
 [ext_resource type="PackedScene" uid="uid://crm5vtmumwswo" path="res://character/character.tscn" id="3_63c5o"]
+[ext_resource type="PackedScene" path="res://hud/player_hud.tscn" id="4_gf7u2"]
 
 [node name="BaseLevel" type="Node2D" unique_id=849185225]
 
@@ -13,3 +14,5 @@
 [node name="Character" parent="." unique_id=689889568 instance=ExtResource("3_63c5o")]
 
 [node name="Enemies" type="Node2D" parent="." unique_id=87223836]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("4_gf7u2")]

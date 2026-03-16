@@ -2,22 +2,44 @@
 
 [ext_resource type="Script" uid="uid://d4jeqe8j83tp8" path="res://entities/components/base_enemy.gd" id="1_y1lly"]
 [ext_resource type="Script" uid="uid://d3p0ln4ayyx8k" path="res://entities/components/enemy_texture.gd" id="2_co1hf"]
+[ext_resource type="Script" uid="uid://cwp1ig8qw8wt2" path="res://entities/components/enemy_attack_area.gd" id="3_ld0rs"]
+[ext_resource type="Script" path="res://entities/components/enemy_hp_bar.gd" id="4_9k2np"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ntbv"]
 
-[node name="BaseEnemy" type="CharacterBody2D" unique_id=1058123131 node_paths=PackedStringArray("_enemy_texture", "_floor_detection_ray")]
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=1058123131 node_paths=PackedStringArray("_enemy_texture", "_floor_detection_ray", "_hp_bar")]
 script = ExtResource("1_y1lly")
 _enemy_texture = NodePath("Texture")
 _floor_detection_ray = NodePath("FloorDetectionRay")
+_hp_bar = NodePath("HpBar")
 
-[node name="Texture" type="AnimatedSprite2D" parent="." unique_id=591695575 node_paths=PackedStringArray("_enemy")]
+[node name="Texture" type="AnimatedSprite2D" parent="." unique_id=591695575 node_paths=PackedStringArray("_enemy", "_attack_area_collision")]
 sprite_frames = SubResource("SpriteFrames_6ntbv")
 script = ExtResource("2_co1hf")
 _enemy = NodePath("..")
+_attack_area_collision = NodePath("../AttackArea/Collision")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1914730052]
 
 [node name="FloorDetectionRay" type="RayCast2D" parent="." unique_id=2106355783]
 target_position = Vector2(0, 16)
 
+[node name="AttackArea" type="Area2D" parent="." unique_id=1638709117]
+script = ExtResource("3_ld0rs")
+
+[node name="Collision" type="CollisionShape2D" parent="AttackArea" unique_id=1559261113]
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1767128622]
+
+[node name="Collision" type="CollisionShape2D" parent="DetectionArea" unique_id=1127055121]
+
+[node name="HpBar" type="Node2D" parent="."]
+z_index = 10
+position = Vector2(0, -15)
+script = ExtResource("4_9k2np")
+
 [connection signal="animation_finished" from="Texture" to="Texture" method="_on_animation_finished"]
+[connection signal="frame_changed" from="Texture" to="Texture" method="_on_frame_changed"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_shape_exited" from="DetectionArea" to="." method="_on_detection_area_body_shape_exited"]
