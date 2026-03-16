@@ -75,9 +75,10 @@ Snapshot com base na configuração atual do projeto:
 | Mover para esquerda | `A` / `←` | - | D-pad esquerda / eixo esquerdo (-X) |
 | Mover para direita | `D` / `→` | - | D-pad direita / eixo esquerdo (+X) |
 | Pular | `W` / `↑` / `Space` | - | Botão `A` |
-| Atacar | `J` | Clique esquerdo | Botão `X` |
-| Arremessar espada | `L` | Clique direito | Botão `R1` |
-| Dash | `K` | Clique do meio | Botão `Y` |
+| Atacar | `J` | Clique esquerdo | Botão `10` (`RB` no mapeamento SDL) |
+| Arremessar espada | `L` | Clique direito | Botão `9` (`LB` no mapeamento SDL) |
+| Dash | `K` | Clique do meio | Botão `2` (`X` no mapeamento SDL) |
+| Defesa (`defese`) | `F` | - | Eixo `4` positivo |
 
 ## Mecânicas implementadas
 
