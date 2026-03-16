@@ -28,7 +28,12 @@ Atualmente, o núcleo de gameplay já conta com:
 - pulo duplo;
 - combos de ataque no chão e no ar;
 - arremesso de espada;
+- dash com consumo de fôlego;
 - coleta de espada;
+- sistema de status (HP, DEF, DMG);
+- HUD do player (HP/STA/DMG/DEF e estado da espada);
+- inimigos com HP, dano de contato/skill e knockback configurável;
+- popup de dano/bloqueio/resistência/crítico;
 - efeitos visuais para ações (poeira, golpes, impacto etc.);
 - background com parallax e nuvens em movimento.
 
@@ -40,6 +45,7 @@ Snapshot com base na configuração atual do projeto:
 - **Cena principal configurada:** `res://background/background.tscn`
 - **Fase jogável montada:** `res://levels/island_t1.tscn`
 - **Autoload global:** `res://management/global.gd`
+- **Autoload de save:** `res://management/save_data.gd`
 - **Resolução base do viewport:** `640x360` (janela com override `1280x720`)
 
 ## Tecnologias
@@ -70,7 +76,8 @@ Snapshot com base na configuração atual do projeto:
 | Mover para direita | `D` / `→` | - | D-pad direita / eixo esquerdo (+X) |
 | Pular | `W` / `↑` / `Space` | - | Botão `A` |
 | Atacar | `J` | Clique esquerdo | Botão `X` |
-| Arremessar espada | `K` | Clique direito | - |
+| Arremessar espada | `L` | Clique direito | Botão `R1` |
+| Dash | `K` | Clique do meio | Botão `Y` |
 
 ## Mecânicas implementadas
 
@@ -78,8 +85,16 @@ Snapshot com base na configuração atual do projeto:
 - **Pulo duplo** com controle por contador de saltos
 - **Combo de ataque no chão** (3 etapas)
 - **Combo aéreo** (2 etapas)
+- **Dash + stamina** (2 usos seguidos por padrão e recuperação gradual)
+- **Dash Attack** (combo durante dash com multiplicador de dano)
 - **Arremesso de espada** com projétil (`CharacterSword`)
 - **Pickup de espada** (`CollectableSword`) para habilitar ataques
+- **Idle especial por inatividade** (`idle_fun` / `idle_fun_with_sword`)
+- **HUD de status do player** (HP/STA/DMG/DEF/Sword)
+- **Popup de combate** (normal, crítico, resistido, bloqueado)
+- **Persistência de status/equip** via `SaveData` autoload
+- **Inimigos com barra de HP estilo MMORPG**
+- **PinkStar com telegraph de pré-ataque + investida girando (roll)**
 - **Spawn centralizado de VFX** via autoload `global.spawn_effect(...)`
 - **Parallax dinâmico** com múltiplas camadas e nuvens com velocidades diferentes
 
@@ -93,6 +108,7 @@ Snapshot com base na configuração atual do projeto:
 |-- components/         # Componentes base reutilizáveis
 |-- levels/             # Cenas de nível (ex.: island_t1)
 |-- management/         # Autoloads e serviços globais
+|-- hud/                # HUD do jogador
 |-- terrain/            # TileSet/TileMap de terreno
 |-- throwables/         # Objetos arremessáveis
 |-- visual_effects/     # Efeitos visuais (ataque, poeira, explosão etc.)
@@ -101,18 +117,22 @@ Snapshot com base na configuração atual do projeto:
 
 ## Scripts principais
 
-- `character/character.gd`: movimentação, pulo, ataques, combo e arremesso
-- `character/character_texture.gd`: máquina de animação e janela de hit dos ataques
+- `character/character.gd`: movimentação, pulo, combate, dash, stamina e status
+- `character/character_texture.gd`: máquina de animação, hit windows e idle especial
 - `throwables/character_sword/character_sword.gd`: lógica da espada arremessada e drop
 - `collectables/sword/collectable_sword.gd`: consumo da espada pelo personagem
-- `management/global.gd`: utilitário global de spawn de efeitos
+- `entities/components/base_enemy.gd`: base de IA/combate dos inimigos
+- `entities/pink_star/pink_star.gd`: comportamento de combate do PinkStar
+- `management/global.gd`: utilitários globais de VFX e popups
+- `management/save_data.gd`: persistência de stats do player
+- `hud/player_hud.gd`: atualização de UI de status do player
 - `background/background.gd`: movimentação contínua das nuvens
 
 ## Roadmap sugerido
 
-- definir oficialmente a cena principal jogável (ex.: `levels/island_t1.tscn`);
-- adicionar HUD (vida, estado da espada, feedback de combo);
-- incluir inimigos e sistema de dano no `AttackArea`;
+- consolidar árvore de estados de IA (patrulha, perseguição, telegraph, skill);
+- criar progressão completa de atributos e itens de craft/equip;
+- adicionar feedback sonoro para hits, bloqueios, dash e morte;
 - criar loop de gameplay com objetivo, vitória e derrota;
 - configurar testes de regressão de cenas e validação de input.
 
